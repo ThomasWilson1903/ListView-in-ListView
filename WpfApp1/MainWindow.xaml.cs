@@ -39,7 +39,7 @@ namespace WpfApp1
 
             CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(lvMain.ItemsSource);
             PropertyGroupDescription groupDescription = new PropertyGroupDescription("Date");
-            view.GroupDescriptions.Add(groupDescription);
+            view.GroupDescriptions.Add(groupDescription);//тестовый комент
         }
         
 
