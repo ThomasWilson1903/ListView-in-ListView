@@ -8,27 +8,29 @@
         Title="MainWindow" Height="450" Width="800">
 
     <Grid>
-        <ListView x:Name="lvMain">
+        <ListView Name="lvMain">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel >
-                        <TextBlock Text="{Binding data}"/>
+                    <StackPanel Orientation="Horizontal">
 
-                        <ListView Height="300" Width="300" ItemsSource="{Binding name}">
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <StackPanel Orientation="Horizontal">
-                                        
-                                    <TextBlock Text="{Binding nameSub}"/>
-                                    <TextBlock Margin=" 5 0 0 0" Text="{Binding AccessSub}"/>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
+                        <TextBlock Text="{Binding Subiectum}"/>
+                        <TextBlock Margin="5 0 0 0" Text="{Binding Aestimatio}"/>
+                        <TextBlock Margin="5 0 0 0" Text="{Binding Comment}"/>
                     </StackPanel>
 
                 </DataTemplate>
             </ListView.ItemTemplate>
+
+            <ListView.GroupStyle>
+                <GroupStyle>
+                    <GroupStyle.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock  FontSize="20" Width="150" Foreground="Black" Height="50" 
+                                        Text="{Binding Name, StringFormat= d MMMM, ConverterCulture='ru-RU'}"/>
+                        </DataTemplate>
+                    </GroupStyle.HeaderTemplate>
+                </GroupStyle>
+            </ListView.GroupStyle>
         </ListView>
     </Grid>
 </Window>

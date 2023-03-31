@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,75 +27,23 @@ namespace WpfApp1
         public MainWindow()
         {
             InitializeComponent();
-            select();
+            select(1);
         }
 
-        class dwqd
+        
+
+        void select(int ListItem)
         {
-            public DateOnly data { get; set; }
+            List<Journal> items = EfModels.init().Journals.Where(p => p.Students == 1 ).ToList();
+            lvMain.ItemsSource = items;
 
-            public List<das> name { get; set; }
-
+            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(lvMain.ItemsSource);
+            PropertyGroupDescription groupDescription = new PropertyGroupDescription("Date");
+            view.GroupDescriptions.Add(groupDescription);
         }
+        
 
-        class das
-        {
-            public string nameSub { get; set; }
-            public int AccessSub { get; set; }
-        }
+        
 
-        void select()
-        {
-            IEnumerable<dwqd> list = new List<dwqd>
-            {
-                
-                new dwqd
-                {
-                    data = new DateOnly(2023, 03,29),
-                    name = new List<das>
-                    {
-                        new das
-                        {
-                            nameSub = "Биология",
-                            AccessSub = 2,
-                        },
-                        new das
-                        {
-                            nameSub = "История",
-                            AccessSub = 3,
-                        },
-                        new das
-                        {
-                            nameSub = "Алгебра",
-                            AccessSub = 5,
-                        }
-                    }
-                },
-                new dwqd
-                {
-                    data = new DateOnly(2023, 03,30),
-                    name = new List<das>
-                    {
-                        new das
-                        {
-                            nameSub = "Биология",
-                            AccessSub = 2,
-                        },
-                        new das
-                        {
-                            nameSub = "История",
-                            AccessSub = 3,
-                        },
-                        new das
-                        {
-                            nameSub = "Алгебра",
-                            AccessSub = 5,
-                        }
-                    }
-                }
-            };
-            //IEnumerable<dwqd> list  = EfModels.init().Journals.Include(p=>p.ListItemsNavigation).ToList();
-            lvMain.ItemsSource = list;
-        }
     }
 }

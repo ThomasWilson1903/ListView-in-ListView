@@ -8,7 +8,6 @@ namespace WpfApp1.DataBase
 {
     public partial class EfModels : DbContext
     {
-
         private static EfModels instans;
 
         public static EfModels init()
